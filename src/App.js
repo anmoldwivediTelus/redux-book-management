@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import './App.css';
-import { useSelector } from "react-redux"
 import { useGetAllbooksQuery,useAddBookMutation } from './services/book'
 
 function App() {
-  const {getAllbooks,data, error, isLoading } = useGetAllbooksQuery()
+  const {data, error, isLoading } = useGetAllbooksQuery()
   const [bookName,setBookName] = useState('')
-  const [addBook, { isDataLoading }] = x()
+  const [addBook, { isDataLoading }] = useAddBookMutation()
   const [authorName,setAuthorName] = useState('')
   const handleAddBook = async(e) => {
     try {
@@ -20,7 +19,7 @@ function App() {
       console.log(err)
     }
   }
-  
+  console.log(data,"fadssa")
   return (
     <div className="App">
       <form>
